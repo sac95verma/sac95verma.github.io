@@ -1,0 +1,93 @@
+/* ==========================================================================
+   theme.css — Design tokens & CSS custom properties
+   Terminal Portfolio — Sachin Verma
+   ========================================================================== */
+
+:root {
+  /* ── Core Palette ─────────────────────────────────────────────── */
+  --green:        #00ff41;
+  --green-bright: #39ff75;
+  --green-dim:    #00cc33;
+  --green-dark:   #003b0f;
+  --green-glow:   rgba(0, 255, 65, 0.12);
+  --green-glow-lg:rgba(0, 255, 65, 0.20);
+
+  --amber:        #ffb000;
+  --amber-dim:    #cc8c00;
+  --cyan:         #00e5ff;
+  --cyan-dim:     #00b8cc;
+  --red:          #ff3131;
+  --red-dim:      #cc2525;
+  --magenta:      #ff00ff;
+
+  /* ── Background Layers ───────────────────────────────────────── */
+  --bg-base:      #070b07;
+  --bg-screen:    #0a0e0a;
+  --bg-elevated:  #0d120d;
+  --bg-card:      #101510;
+  --bg-hover:     #131a13;
+
+  /* ── Borders ─────────────────────────────────────────────────── */
+  --border-dim:   rgba(0, 255, 65, 0.12);
+  --border:       rgba(0, 255, 65, 0.22);
+  --border-bright:rgba(0, 255, 65, 0.45);
+
+  /* ── Text ─────────────────────────────────────────────────────── */
+  --text-primary:   #c8ecd0;
+  --text-secondary: #8ab89a;
+  --text-muted:     #4a7c59;
+  --text-comment:   #3d6349;
+  --text-white:     #f0fff4;
+
+  /* ── Shadows & Glows ─────────────────────────────────────────── */
+  --shadow-green:   0 0 8px  rgba(0, 255, 65, 0.4);
+  --shadow-green-lg:0 0 24px rgba(0, 255, 65, 0.25);
+  --shadow-screen:  0 0 60px rgba(0, 255, 65, 0.06), inset 0 0 120px rgba(0, 0, 0, 0.5);
+
+  /* ── Typography ───────────────────────────────────────────────── */
+  --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-display: 'VT323', monospace;
+
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 14px;
+  --text-md:   16px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+  --text-3xl:  48px;
+  --text-4xl:  64px;
+
+  /* ── Spacing ─────────────────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ── Radii ───────────────────────────────────────────────────── */
+  --radius-sm: 2px;
+  --radius:    4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* ── Transitions ─────────────────────────────────────────────── */
+  --transition-fast: 0.15s ease;
+  --transition:      0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* ── Z-Index Scale ───────────────────────────────────────────── */
+  --z-base:     1;
+  --z-sticky:   100;
+  --z-overlay:  200;
+  --z-crt:      9997;
+  --z-vignette: 9998;
+  --z-scanline: 9999;
+}
+
+/* ── CRT Screen Effects (applied via body pseudo-elements in base.css) ── */

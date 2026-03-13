@@ -1,0 +1,59 @@
+/* ==========================================================================
+   mobile-nav.css — Bottom navigation for small screens
+   Terminal Portfolio — Sachin Verma
+   ========================================================================== */
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0d120d;
+  border-top: 1px solid var(--border);
+  z-index: var(--z-overlay);
+  padding: var(--space-2) var(--space-4);
+}
+
+.mobile-nav__list {
+  display: flex;
+  justify-content: space-around;
+  gap: 0;
+}
+
+.mobile-nav__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: color var(--transition-fast);
+  background: transparent;
+  border: none;
+  min-width: 56px;
+}
+
+.mobile-nav__btn:hover,
+.mobile-nav__btn.is-active {
+  color: var(--green);
+}
+
+.mobile-nav__icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.mobile-nav__label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+}
+
+@media (max-width: 580px) {
+  .mobile-nav { display: block; }
+  .terminal-wrap { padding-bottom: 80px; }
+}
