@@ -7,4 +7,4 @@ This is my personal portfolio website hosted on GitHub Pages.
 * GitHub Pages
 
 ## Deployment
-Automatically deployed to [yourusername].github.io
+Automatically deployed to sac95verma.github.io
