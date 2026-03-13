@@ -166,10 +166,11 @@ function renderContact(data) {
   const timestamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
 
   const cards = [
-    { icon: '📧', label: 'EMAIL',    value: personal.email,    href: 'mailto:' + personal.email },
-    { icon: '🔗', label: 'LINKEDIN', value: personal.linkedin, href: personal.linkedinUrl },
-    { icon: '📱', label: 'PHONE',    value: personal.phone,    href: 'tel:' + personal.phone.replace(/\s/g,'') },
-    { icon: '📍', label: 'LOCATION', value: personal.location, href: null },
+    { icon: '📧', label: 'EMAIL',     value: personal.email,      href: 'mailto:' + personal.email },
+    { icon: '🔗', label: 'LINKEDIN',  value: personal.linkedin,   href: personal.linkedinUrl },
+    { icon: '📱', label: 'PHONE',     value: personal.phone,      href: 'tel:' + personal.phone.replace(/\s/g,'') },
+    { icon: '💬', label: 'WHATSAPP',  value: personal.whatsapp,   href: personal.whatsappUrl },
+    { icon: '📍', label: 'LOCATION',  value: personal.location,   href: null },
   ].map(c => c.href
     ? `<a class="contact-card" href="${c.href}" ${c.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>
          <div class="contact-card__icon">${c.icon}</div>

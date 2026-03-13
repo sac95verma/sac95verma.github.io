@@ -17,6 +17,8 @@ const RESUME = {
     linkedinUrl: 'https://linkedin.com/in/sac95verma',
     status:   'available',
     domains:  ['FinTech', 'Healthcare', 'E-Commerce'],
+    whatsapp:    '+971 529095664',
+    whatsappUrl: 'https://wa.me/971529095664',
   },
 
   /* ── Summary ──────────────────────────────────────────────────────────── */
