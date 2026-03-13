@@ -22,11 +22,11 @@ const RESUME = {
   },
 
   /* ── Summary ──────────────────────────────────────────────────────────── */
-  summary: `Senior Software Engineer with <strong>8+ years</strong> of experience architecting scalable solutions in FinTech, E-commerce, and Healthcare domains. Demonstrated expertise in building payment infrastructure processing <strong>$50M+ monthly volume</strong> and AI-powered healthcare solutions. Strong track record of leading cross-functional teams and delivering high-impact products using modern tech stacks including <strong>TypeScript, Python</strong>, and cloud services.`,
+  summary: `Senior Software Engineer with <strong>9+ years</strong> of experience architecting scalable solutions in FinTech, E-commerce, and Healthcare domains. Demonstrated expertise in building payment infrastructure processing <strong>$100M+ monthly volume</strong> and AI-powered healthcare solutions. Strong track record of leading cross-functional teams and delivering high-impact products using modern tech stacks including <strong>TypeScript, Python</strong>, and cloud services.`,
 
   /* ── Stats ────────────────────────────────────────────────────────────── */
   stats: [
-    { num: '8+',    label: 'Years Exp' },
+    { num: '9+',    label: 'Years Exp' },
     { num: '$100M', label: 'Txn Vol/Mo' },
     { num: '5',     label: 'Companies' },
     { num: '99.99', label: '% Uptime' },
