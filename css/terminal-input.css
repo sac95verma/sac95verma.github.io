@@ -1,0 +1,301 @@
+/* ==========================================================================
+   css/terminal-input.css — Interactive command input bar & output styles
+   Terminal Portfolio — Sachin Verma
+   ========================================================================== */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   INPUT AREA — fixed at bottom of screen
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.term-input-area {
+  border-top: 1px solid var(--border-dim);
+  padding: var(--space-3) var(--space-8);
+  background: var(--bg-screen);
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  /* subtle top glow */
+  box-shadow: 0 -1px 0 0 rgba(0, 255, 65, 0.06);
+}
+
+/* ── Prompt + input row ───────────────────────────────────────────────────── */
+.term-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+/* Prompt label inside input area */
+.term-input-prompt {
+  display: flex;
+  align-items: baseline;
+  flex-shrink: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  font-size: var(--text-sm);
+  padding-right: var(--space-2);
+}
+
+/* The actual <input> */
+.term-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-white);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  caret-color: var(--green);
+  /* make caret thicker/more visible */
+  caret-shape: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.term-input-field::placeholder {
+  color: var(--text-comment);
+  font-style: italic;
+}
+
+/* Ghost autocomplete text layered behind input */
+.term-autocomplete-wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.term-autocomplete-ghost {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  white-space: pre;
+  color: transparent; /* the typed part is invisible */
+}
+
+.term-autocomplete-hint {
+  color: var(--text-comment);
+  opacity: 0.6;
+}
+
+/* Hint row below input (shows multiple tab completions) */
+.term-tab-completions {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  padding-top: 3px;
+  padding-left: 2px;
+  letter-spacing: 0.04em;
+  min-height: 16px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COMMAND HISTORY DISPLAY
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.term-history-wrap {
+  padding: 0 var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.term-history-entry {
+  animation: fadeIn 0.2s ease;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COMMAND OUTPUT BLOCKS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.term-output {
+  margin-top: 4px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  line-height: 1.75;
+  border-left: 2px solid transparent;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* Variants */
+.term-output--success {
+  border-left-color: var(--green-dim);
+  background: rgba(0, 255, 65, 0.03);
+}
+
+.term-output--info {
+  border-left-color: var(--cyan);
+  background: rgba(0, 229, 255, 0.03);
+  color: var(--text-primary);
+}
+
+.term-output--warn {
+  border-left-color: var(--amber);
+  background: rgba(255, 176, 0, 0.04);
+  color: var(--text-primary);
+}
+
+.term-output--error {
+  border-left-color: var(--red);
+  background: rgba(255, 49, 49, 0.06);
+  color: #ffaaaa;
+  animation: shakeError 0.35s ease;
+}
+
+.term-output--echo {
+  border-left-color: var(--text-muted);
+  color: var(--text-primary);
+}
+
+/* Error icon + shake */
+.term-error-icon {
+  color: var(--red);
+  margin-right: var(--space-2);
+  font-size: 12px;
+}
+
+@keyframes shakeError {
+  0%         { transform: translateX(0); }
+  20%        { transform: translateX(-6px); }
+  40%        { transform: translateX(5px); }
+  60%        { transform: translateX(-4px); }
+  80%        { transform: translateX(3px); }
+  100%       { transform: translateX(0); }
+}
+
+/* ── Help table ─────────────────────────────────────────────────────────── */
+.term-table-title {
+  color: var(--cyan);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.term-table {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px var(--space-5);
+}
+
+.term-row {
+  display: contents;
+}
+
+.term-cmd-name {
+  color: var(--green);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.term-cmd-desc {
+  color: var(--text-secondary);
+}
+
+/* ── ls grid ────────────────────────────────────────────────────────────── */
+.term-ls-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  margin-bottom: var(--space-2);
+}
+
+.term-ls-dir {
+  color: var(--cyan);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  font-weight: 500;
+}
+
+.term-ls-dir:hover {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+/* ── Inline command reference ─────────────────────────────────────────────── */
+.term-inline-cmd {
+  color: var(--green);
+  background: rgba(0, 255, 65, 0.1);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+}
+
+/* ── History list ────────────────────────────────────────────────────────── */
+.term-hist {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.term-hist-row {
+  line-height: 1.7;
+}
+
+.term-hist-num {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  user-select: none;
+}
+
+/* ── Hint / tip line ─────────────────────────────────────────────────────── */
+.term-hint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+}
+
+/* ── Welcome banner (shown on first load below boot) ─────────────────────── */
+.term-welcome-banner {
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-5);
+  background: rgba(0, 255, 65, 0.02);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  line-height: 2;
+  margin-top: var(--space-4);
+}
+
+.term-welcome-banner .highlight {
+  color: var(--green);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SCREEN LAYOUT ADJUSTMENT
+   Content area now sits above the sticky input
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important; /* override base padding — each region handles its own */
+}
+
+.screen__content {
+  flex: 1;
+  padding: var(--space-8) var(--space-8) var(--space-4);
+  overflow-y: auto;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MOBILE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .term-input-area   { padding: var(--space-3) var(--space-4); }
+  .screen__content   { padding: var(--space-4); }
+  .term-history-wrap { padding: 0 var(--space-4); }
+  .term-table        { grid-template-columns: 1fr; gap: 2px; }
+  .term-row          { display: flex; flex-direction: column; margin-bottom: var(--space-1); }
+  .term-cmd-desc     { padding-left: var(--space-3); color: var(--text-muted); }
+}

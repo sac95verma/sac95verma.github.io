@@ -1,6 +1,10 @@
 /* ==========================================================================
    js/nav.js — Section navigation, tab switching, URL hash routing
    Terminal Portfolio — Sachin Verma
+
+   NOTE: Number key shortcuts (1-5) were intentionally removed — they
+   interfere with typing commands in the terminal input bar.
+   Navigation is handled via: tab clicks, mobile nav, and terminal commands.
    ========================================================================== */
 
 const SECTIONS = ['about', 'experience', 'skills', 'education', 'contact'];
@@ -12,7 +16,7 @@ const SECTIONS = ['about', 'experience', 'skills', 'education', 'contact'];
 function showSection(id) {
   if (!SECTIONS.includes(id)) return;
 
-  // Update sections
+  // Update section visibility
   SECTIONS.forEach((s) => {
     const el = document.getElementById('section-' + s);
     if (el) el.classList.toggle('is-active', s === id);
@@ -23,35 +27,33 @@ function showSection(id) {
     tab.classList.toggle('is-active', tab.dataset.section === id);
   });
 
-  // Update mobile nav buttons
+  // Update mobile nav
   document.querySelectorAll('.mobile-nav__btn').forEach((btn) => {
     btn.classList.toggle('is-active', btn.dataset.section === id);
   });
 
-  // Update URL hash (without scrolling)
+  // Update URL hash
   history.replaceState(null, '', '#' + id);
 
-  // Trigger section-specific side-effects
+  // Trigger skill bars if navigating to skills
   if (id === 'skills') {
     requestAnimationFrame(() => animateSkillBars());
   }
 
-  // Scroll to top of screen
-  const screen = document.querySelector('.screen');
-  if (screen) screen.scrollTop = 0;
+  // Scroll content area back to top
+  const content = document.getElementById('screen-content');
+  if (content) content.scrollTop = 0;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /**
- * Initialise nav — bind click handlers and handle initial hash.
+ * Init — bind click handlers and handle initial hash.
  */
 function initNav() {
-  // Desktop tab clicks
   document.querySelectorAll('.nav-tab').forEach((tab) => {
     tab.addEventListener('click', () => showSection(tab.dataset.section));
   });
 
-  // Mobile nav clicks
   document.querySelectorAll('.mobile-nav__btn').forEach((btn) => {
     btn.addEventListener('click', () => showSection(btn.dataset.section));
   });

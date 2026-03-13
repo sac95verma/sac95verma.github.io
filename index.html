@@ -3,142 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ── SEO & Social ──────────────────────────────────────────────────── -->
   <title>Sachin Verma — Senior Software Engineer</title>
-  <meta name="description" content="Senior Software Engineer with 8+ years in FinTech, Healthcare & E-Commerce. Building scalable systems, payment infrastructure & AI-powered solutions." />
-  <meta name="author"      content="Sachin Verma" />
-  <meta name="keywords"    content="Sachin Verma, Software Engineer, FinTech, TypeScript, Python, Dubai" />
-
-  <!-- Open Graph -->
+  <meta name="description" content="Senior Software Engineer with 8+ years in FinTech, Healthcare & E-Commerce." />
+  <meta name="author" content="Sachin Verma" />
   <meta property="og:title"       content="Sachin Verma — Senior Software Engineer" />
   <meta property="og:description" content="8+ years building payment systems, AI platforms & high-scale infrastructure." />
   <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://sac95verma.github.io" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary" />
-  <meta name="twitter:title"       content="Sachin Verma — Senior Software Engineer" />
-  <meta name="twitter:description" content="8+ years in FinTech, Healthcare & E-Commerce." />
-
-  <!-- ── Favicon (terminal > character) ──────────────────────────────── -->
+  <meta name="twitter:card"       content="summary" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0e0a'/><text y='.9em' font-size='80' fill='%2300ff41'>❯</text></svg>" />
 
-  <!-- ── Stylesheets ──────────────────────────────────────────────────── -->
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/terminal.css" />
   <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/terminal-input.css" />
   <link rel="stylesheet" href="css/mobile-nav.css" />
 </head>
 <body>
 
-  <!-- CRT noise overlay -->
   <div class="noise-overlay" aria-hidden="true"></div>
 
-  <!-- ════════════════════════════════════════════════════════════════════
-       TERMINAL WINDOW
-       ════════════════════════════════════════════════════════════════════ -->
   <div class="terminal-wrap">
 
-    <!-- ── Title Bar ──────────────────────────────────────────────────── -->
+    <!-- Title Bar -->
     <div class="titlebar" role="banner">
-
       <div class="titlebar__dots" aria-hidden="true">
-        <div class="titlebar__dot titlebar__dot--close"  title="Close"></div>
-        <div class="titlebar__dot titlebar__dot--min"    title="Minimize"></div>
-        <div class="titlebar__dot titlebar__dot--max"    title="Maximize"></div>
+        <div class="titlebar__dot titlebar__dot--close"></div>
+        <div class="titlebar__dot titlebar__dot--min"></div>
+        <div class="titlebar__dot titlebar__dot--max"></div>
       </div>
-
       <div class="titlebar__label">
         sachin@portfolio — bash — 132×50 &nbsp;|&nbsp; <span id="titlebar-time">--:--:--</span>
       </div>
-
-      <!-- Desktop nav -->
       <nav class="titlebar__nav" aria-label="Portfolio sections">
-        <button class="nav-tab is-active" data-section="about"      aria-label="About">~/about</button>
-        <button class="nav-tab"           data-section="experience"  aria-label="Experience">~/experience</button>
-        <button class="nav-tab"           data-section="skills"      aria-label="Skills">~/skills</button>
-        <button class="nav-tab"           data-section="education"   aria-label="Education">~/education</button>
-        <button class="nav-tab"           data-section="contact"     aria-label="Contact">~/contact</button>
+        <button class="nav-tab is-active" data-section="about">~/about</button>
+        <button class="nav-tab" data-section="experience">~/experience</button>
+        <button class="nav-tab" data-section="skills">~/skills</button>
+        <button class="nav-tab" data-section="education">~/education</button>
+        <button class="nav-tab" data-section="contact">~/contact</button>
       </nav>
+    </div>
 
-    </div><!-- /titlebar -->
-
-    <!-- ── Screen ─────────────────────────────────────────────────────── -->
+    <!-- Screen -->
     <main class="screen" role="main">
 
-      <!-- ── ABOUT ──────────────────────────────────────────────────── -->
-      <section id="section-about" class="section is-active" aria-label="About">
+      <!-- Scrollable content -->
+      <div class="screen__content" id="screen-content">
 
-        <!-- Boot sequence (shown first, then hidden) -->
-        <div id="boot-container" class="boot-seq" aria-live="polite"></div>
+        <section id="section-about" class="section is-active" aria-label="About">
+          <div id="boot-container" class="boot-seq" aria-live="polite"></div>
+          <div id="about-hero-content" style="display:none"></div>
+        </section>
 
-        <!-- Hero content (hidden until boot completes) -->
-        <div id="about-hero-content" style="display:none">
-          <!-- Populated by render.js -->
+        <section id="section-experience" class="section" aria-label="Experience"></section>
+        <section id="section-skills"     class="section" aria-label="Skills"></section>
+        <section id="section-education"  class="section" aria-label="Education"></section>
+        <section id="section-contact"    class="section" aria-label="Contact"></section>
+
+        <!-- Command history output -->
+        <div class="term-history-wrap" id="term-history" aria-live="polite"></div>
+
+      </div>
+
+      <!-- Sticky command input bar -->
+      <div class="term-input-area" id="term-input-area">
+
+        <!-- One-time welcome hint -->
+        <div class="term-welcome-banner" id="term-welcome-banner" style="display:none">
+          <span class="highlight">❯</span>
+          Type <span class="term-inline-cmd">help</span> to see all commands &nbsp;·&nbsp;
+          <span class="term-inline-cmd">ls</span> to list sections &nbsp;·&nbsp;
+          <span class="term-inline-cmd">cd experience</span> to navigate &nbsp;·&nbsp;
+          <kbd style="color:var(--text-muted)">Tab</kbd> autocomplete &nbsp;·&nbsp;
+          <kbd style="color:var(--text-muted)">↑↓</kbd> history
         </div>
 
-      </section>
+        <div class="term-input-row">
+          <div class="term-input-prompt" aria-hidden="true">
+            <span class="p-user">sachin</span><span class="p-at">@</span><span class="p-host">portfolio</span><span class="p-colon">:</span><span class="p-path" id="input-path">~</span><span class="p-dollar">$</span>&nbsp;
+          </div>
+          <div class="term-autocomplete-wrap">
+            <input
+              type="text"
+              id="term-input"
+              class="term-input-field"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+              placeholder="type a command... (try: help)"
+              aria-label="Terminal command input"
+            />
+            <span class="term-autocomplete-ghost" aria-hidden="true">
+              <span id="term-typed-ghost"></span>
+              <span id="term-autocomplete-hint" class="term-autocomplete-hint"></span>
+            </span>
+          </div>
+        </div>
 
-      <!-- ── EXPERIENCE ─────────────────────────────────────────────── -->
-      <section id="section-experience" class="section" aria-label="Experience">
-        <!-- Populated by render.js -->
-      </section>
+        <div class="term-tab-completions" id="term-tab-completions" aria-live="polite"></div>
 
-      <!-- ── SKILLS ────────────────────────────────────────────────── -->
-      <section id="section-skills" class="section" aria-label="Skills">
-        <!-- Populated by render.js -->
-      </section>
+      </div>
 
-      <!-- ── EDUCATION ─────────────────────────────────────────────── -->
-      <section id="section-education" class="section" aria-label="Education">
-        <!-- Populated by render.js -->
-      </section>
+    </main>
 
-      <!-- ── CONTACT ───────────────────────────────────────────────── -->
-      <section id="section-contact" class="section" aria-label="Contact">
-        <!-- Populated by render.js -->
-      </section>
+  </div>
 
-    </main><!-- /screen -->
-
-  </div><!-- /terminal-wrap -->
-
-  <!-- ════════════════════════════════════════════════════════════════════
-       MOBILE BOTTOM NAV
-       ════════════════════════════════════════════════════════════════════ -->
+  <!-- Mobile bottom nav -->
   <nav class="mobile-nav" aria-label="Mobile navigation">
     <ul class="mobile-nav__list" role="list">
-      <li><button class="mobile-nav__btn is-active" data-section="about">
-        <span class="mobile-nav__icon">👤</span>
-        <span class="mobile-nav__label">about</span>
-      </button></li>
-      <li><button class="mobile-nav__btn" data-section="experience">
-        <span class="mobile-nav__icon">💼</span>
-        <span class="mobile-nav__label">work</span>
-      </button></li>
-      <li><button class="mobile-nav__btn" data-section="skills">
-        <span class="mobile-nav__icon">⚙️</span>
-        <span class="mobile-nav__label">skills</span>
-      </button></li>
-      <li><button class="mobile-nav__btn" data-section="education">
-        <span class="mobile-nav__icon">🎓</span>
-        <span class="mobile-nav__label">edu</span>
-      </button></li>
-      <li><button class="mobile-nav__btn" data-section="contact">
-        <span class="mobile-nav__icon">📡</span>
-        <span class="mobile-nav__label">ping</span>
-      </button></li>
+      <li><button class="mobile-nav__btn is-active" data-section="about"><span class="mobile-nav__icon">👤</span><span class="mobile-nav__label">about</span></button></li>
+      <li><button class="mobile-nav__btn" data-section="experience"><span class="mobile-nav__icon">💼</span><span class="mobile-nav__label">work</span></button></li>
+      <li><button class="mobile-nav__btn" data-section="skills"><span class="mobile-nav__icon">⚙️</span><span class="mobile-nav__label">skills</span></button></li>
+      <li><button class="mobile-nav__btn" data-section="education"><span class="mobile-nav__icon">🎓</span><span class="mobile-nav__label">edu</span></button></li>
+      <li><button class="mobile-nav__btn" data-section="contact"><span class="mobile-nav__icon">📡</span><span class="mobile-nav__label">ping</span></button></li>
     </ul>
   </nav>
 
-  <!-- ── Scripts (order matters) ──────────────────────────────────────── -->
+  <!-- Scripts — order matters -->
   <script src="data/resume.js"></script>
   <script src="js/boot.js"></script>
   <script src="js/skills.js"></script>
   <script src="js/render.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/terminal-input.js"></script>
   <script src="js/main.js"></script>
 
 </body>
